@@ -182,6 +182,13 @@
     </li>
   </ul>
 <script>
+  const timeNodes = Array.from(document.querySelectorAll('[data-time]')); // select all nodes with data-time attribute on them returns NodeList
+  const seconds = timeNodes.map(node => node.dataset.time)
+  .map(timeCode => {
+    const [mins, secs] = timeCode.split(":").map(parseFloat);
+    return (mins * 60) + secs; // get seconds
+  })
+  .reduce((total, seconds) => total + seconds);
 </script>
 </body>
 </html>
